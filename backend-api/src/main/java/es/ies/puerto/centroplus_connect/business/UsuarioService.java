@@ -1,12 +1,12 @@
-package es.ies.puerto.centroplus_connect.services;
+package es.ies.puerto.centroplus_connect.business;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import es.ies.puerto.centroplus_connect.models.Usuario;
-import es.ies.puerto.centroplus_connect.repositories.UsuarioRepository;
+import es.ies.puerto.centroplus_connect.domain.model.Usuario;
+import es.ies.puerto.centroplus_connect.adapters.out.persistence.UsuarioRepository;
 
 @Service
 public class UsuarioService {

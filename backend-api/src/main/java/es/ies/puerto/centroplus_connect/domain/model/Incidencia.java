@@ -1,4 +1,4 @@
-package es.ies.puerto.centroplus_connect.models;
+package es.ies.puerto.centroplus_connect.domain.model;
 
 import java.util.Objects;
 
