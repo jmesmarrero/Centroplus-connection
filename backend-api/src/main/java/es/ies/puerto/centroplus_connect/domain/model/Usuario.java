@@ -1,6 +1,10 @@
 package es.ies.puerto.centroplus_connect.domain.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 
@@ -13,13 +17,15 @@ import jakarta.persistence.Column;
 public class Usuario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String dni;
     private String email;
     private String telefono;
     @Column(name = "tipo_usuario")
-    private String tipoUsuario;
+    @Enumerated(EnumType.STRING)
+    private TipoUsuario tipoUsuario;
 
     public Usuario() {
     }
@@ -28,7 +34,9 @@ public class Usuario {
         this.id = id;
     }
 
-    public Usuario(Long id, String nombre, String dni, String email, String telefono, String tipoUsuario) {
+    
+
+    public Usuario(Long id, String nombre, String dni, String email, String telefono, TipoUsuario tipoUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.dni = dni;
@@ -36,6 +44,8 @@ public class Usuario {
         this.telefono = telefono;
         this.tipoUsuario = tipoUsuario;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -77,18 +87,12 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getTipoUsuario() {
+    public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario [id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", email=" + email + ", telefono="
-                + telefono + ", tipoUsuario=" + tipoUsuario + "]";
     }
 
     @Override
