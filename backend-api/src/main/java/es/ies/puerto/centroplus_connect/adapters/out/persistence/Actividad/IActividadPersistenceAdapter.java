@@ -14,7 +14,7 @@ public interface IActividadPersistenceAdapter {
      * Funcion para crear actividad
      * 
      * @param actividad actividad a crear
-     * @return ture si se ha creado correctamente o false en caso contrario
+     * @return crea actividad nueva
      */
     Actividad save(Actividad actividad);
 
