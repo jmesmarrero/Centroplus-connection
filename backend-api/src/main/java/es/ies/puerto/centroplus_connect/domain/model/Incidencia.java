@@ -3,7 +3,7 @@ package es.ies.puerto.centroplus_connect.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import jakarta.annotation.Generated;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

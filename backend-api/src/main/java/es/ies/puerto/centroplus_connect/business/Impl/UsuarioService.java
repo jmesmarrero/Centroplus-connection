@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import es.ies.puerto.centroplus_connect.domain.model.Usuario;
-import es.ies.puerto.centroplus_connect.adapters.out.persistence.UsuarioRepository;
+import es.ies.puerto.centroplus_connect.adapters.out.persistence.Usuario.UsuarioRepository;
 import es.ies.puerto.centroplus_connect.business.IUsuarioService;
 
 @Service
