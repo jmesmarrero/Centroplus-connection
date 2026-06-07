@@ -1,6 +1,8 @@
 package es.ies.puerto.centroplus_connect.domain.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,24 +12,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "reservas")
 public class Reserva {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
 
-    // TODO: descomentar cuando Jorge cree Actividad.java
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "id_actividad")
-    // private Actividad actividad;
+    @JoinColumn(name = "id_actividad")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Actividad actividad;
 
-    private String fecha;
+    private LocalDate fecha;
 
     @Enumerated(EnumType.STRING)
     private EstadoReserva estado;
@@ -39,9 +42,10 @@ public class Reserva {
         this.id = id;
     }
 
-    public Reserva(Long id, Usuario usuario, String fecha, EstadoReserva estado) {
+    public Reserva(Long id, Usuario usuario, Actividad actividad, LocalDate fecha, EstadoReserva estado) {
         this.id = id;
         this.usuario = usuario;
+        this.actividad = actividad;
         this.fecha = fecha;
         this.estado = estado;
     }
@@ -62,11 +66,19 @@ public class Reserva {
         this.usuario = usuario;
     }
 
-    public String getFecha() {
+    public Actividad getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(Actividad actividad) {
+        this.actividad = actividad;
+    }
+
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -79,8 +91,9 @@ public class Reserva {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public String toString() {
+        return "Reserva [id=" + id + ", usuario=" + usuario + ", actividad=" + actividad + ", fecha=" + fecha
+                + ", estado=" + estado + "]";
     }
 
     @Override
@@ -89,16 +102,16 @@ public class Reserva {
             return false;
         if (this == obj)
             return true;
-        if (!(obj instanceof Reserva))
+        if (!(obj instanceof Reserva)) {
             return false;
-        Reserva otra = (Reserva) obj;
-        return Objects.equals(id, otra.id);
-
+        }
+        Reserva reserva = (Reserva) obj;
+        return Objects.equals(id, reserva.id);
     }
 
     @Override
-    public String toString() {
-        return "Reserva [id=" + id + ", usuario=" + usuario + ", fecha=" + fecha + ", estado=" + estado + "]";
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
 }

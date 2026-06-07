@@ -1,29 +1,41 @@
 package es.ies.puerto.centroplus_connect.domain.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "actividades")
 public class Actividad {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_actividad")
     private TipoActividad tipoActividad;
+
     private Integer duracion;
     private Double precio;
     @Column(name = "plazas_maximas")
     private Integer plazasMaximas;
     @Column(name = "plazas_ocupadas")
     private Integer plazasOcupadas;
+
+    @OneToMany(mappedBy = "actividad", fetch = FetchType.LAZY)
+    private List<Reserva> reservas;
 
     public Actividad() {
     }
@@ -32,8 +44,8 @@ public class Actividad {
         this.id = id;
     }
 
-    public Actividad(Long id, String nombre, TipoActividad tipoActividad, Integer duracion, Double precio, Integer plazasMaximas,
-            Integer plazasOcupadas) {
+    public Actividad(Long id, String nombre, TipoActividad tipoActividad, Integer duracion, Double precio,
+            Integer plazasMaximas, Integer plazasOcupadas, List<Reserva> reservas) {
         this.id = id;
         this.nombre = nombre;
         this.tipoActividad = tipoActividad;
@@ -41,9 +53,8 @@ public class Actividad {
         this.precio = precio;
         this.plazasMaximas = plazasMaximas;
         this.plazasOcupadas = plazasOcupadas;
+        this.reservas = reservas;
     }
-
- 
 
     public Long getId() {
         return id;
@@ -101,14 +112,20 @@ public class Actividad {
         this.plazasOcupadas = plazasOcupadas;
     }
 
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
     @Override
     public String toString() {
         return "Actividad [id=" + id + ", nombre=" + nombre + ", tipoActividad=" + tipoActividad + ", duracion="
                 + duracion + ", precio=" + precio + ", plazasMaximas=" + plazasMaximas + ", plazasOcupadas="
                 + plazasOcupadas + "]";
     }
-
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -120,15 +137,14 @@ public class Actividad {
             return false;
         }
         Actividad actividad = (Actividad) obj;
-        
+
         return Objects.equals(id, actividad.id);
-        
+
     }
 
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
     }
-    
 
 }

@@ -3,11 +3,14 @@ package es.ies.puerto.centroplus_connect.domain.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -19,13 +22,21 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private String dni;
     private String email;
     private String telefono;
+
     @Column(name = "tipo_usuario")
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Reserva> reservas;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Incidencia> incidencias;
 
     public Usuario() {
     }
@@ -34,18 +45,17 @@ public class Usuario {
         this.id = id;
     }
 
-    
-
-    public Usuario(Long id, String nombre, String dni, String email, String telefono, TipoUsuario tipoUsuario) {
+    public Usuario(Long id, String nombre, String dni, String email, String telefono, TipoUsuario tipoUsuario,
+            List<Reserva> reservas, List<Incidencia>incidencias) {
         this.id = id;
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
         this.telefono = telefono;
         this.tipoUsuario = tipoUsuario;
+        this.reservas = reservas;
+        this.incidencias = incidencias;
     }
-
-    
 
     public Long getId() {
         return id;
@@ -95,6 +105,23 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public List<Incidencia> getIncidencias() {
+        return incidencias;
+    }
+
+    public void setIncidencias(List<Incidencia> incidencias) {
+        this.incidencias = incidencias;
+    }
+    
+
     @Override
     public boolean equals(Object obj) {
 
@@ -116,5 +143,7 @@ public class Usuario {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+    
 
 }

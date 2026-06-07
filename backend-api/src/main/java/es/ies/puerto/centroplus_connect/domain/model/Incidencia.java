@@ -1,11 +1,15 @@
 package es.ies.puerto.centroplus_connect.domain.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,9 +20,10 @@ import jakarta.persistence.Table;
 public class Incidencia {
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
@@ -26,7 +31,7 @@ public class Incidencia {
 
     private String descripcion;
 
-    private String fecha;
+    private LocalDate fecha;
 
     @Enumerated(EnumType.STRING)
     private EstadoIncidencia estado;
@@ -38,7 +43,7 @@ public class Incidencia {
         this.id = id;
     }
 
-    public Incidencia(Long id, Usuario usuario, String asunto, String descripcion, String fecha, EstadoIncidencia estado) {
+    public Incidencia(Long id, Usuario usuario, String asunto, String descripcion, LocalDate fecha, EstadoIncidencia estado) {
         this.id = id;
         this.usuario = usuario;
         this.asunto = asunto;
@@ -79,11 +84,11 @@ public class Incidencia {
         this.descripcion = descripcion;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -93,6 +98,12 @@ public class Incidencia {
 
     public void setEstado(EstadoIncidencia estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Incidencia [id=" + id + ", usuario=" + usuario + ", asunto=" + asunto + ", descripcion=" + descripcion
+                + ", fecha=" + fecha + ", estado=" + estado + "]";
     }
 
     @Override
@@ -112,10 +123,6 @@ public class Incidencia {
         return Objects.equals(id, otra.id);
     }
 
-    @Override
-    public String toString() {
-        return "Incidencia [id=" + id + ", usuario=" + usuario + ", asunto=" + asunto + ", descripcion=" + descripcion
-                + ", fecha=" + fecha + ", estado=" + estado + "]";
-    }
+    
 
 }
