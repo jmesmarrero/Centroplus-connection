@@ -3,7 +3,7 @@ package es.ies.puerto.centroplus_connect.business.Impl;
 import java.util.List;
 import java.util.Optional;
 
-import es.ies.puerto.centroplus_connect.adapters.out.persistence.ActividadRepository;
+import es.ies.puerto.centroplus_connect.adapters.out.persistence.Actividad.ActividadRepository;
 import es.ies.puerto.centroplus_connect.business.IActividadService;
 import es.ies.puerto.centroplus_connect.domain.model.Actividad;
 
