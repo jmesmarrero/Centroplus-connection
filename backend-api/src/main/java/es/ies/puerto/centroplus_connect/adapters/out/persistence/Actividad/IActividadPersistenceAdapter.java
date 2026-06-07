@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import es.ies.puerto.centroplus_connect.domain.model.Actividad;
 
-@Repository
+
 public interface IActividadPersistenceAdapter {
 
     /**
