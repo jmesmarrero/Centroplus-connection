@@ -1,6 +1,9 @@
 package es.ies.puerto.centroplus_connect.business.Validator;
 
+import java.time.LocalDate;
+
 import es.ies.puerto.centroplus_connect.domain.model.EstadoIncidencia;
+import es.ies.puerto.centroplus_connect.domain.model.Incidencia;
 
 public class IncidenciaValidator {
 
@@ -12,15 +15,39 @@ public class IncidenciaValidator {
         return texto != null && !texto.isBlank();
     }
 
-    public static boolean esEstadoValido(EstadoIncidencia estado) {
-        return estado != null;
+    public static boolean esAsuntoValido(String asunto) {
+        return esTextoValido(asunto);
     }
 
-    public static boolean esDniValido(String dni) {
-    if (dni == null) {
-        return false;
+    public static boolean esDescripcionValido(String descripcion) {
+        return esTextoValido(descripcion);
     }
-    return dni.matches("^\\d{8}[A-Z]$");
-}
+
+    public static boolean esFechaValida(LocalDate fecha) {
+        if (fecha == null) {
+            return false;
+        }
+        if (fecha.isAfter(LocalDate.now())) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean esEstadoValido(EstadoIncidencia estado) {
+        if (estado == null) {
+            return false;
+        }
+        return estado == EstadoIncidencia.ABIERTA || estado == EstadoIncidencia.CERRADA
+                || estado == EstadoIncidencia.EN_PROCESO;
+    }
+
+    public static boolean incidenciaValida(Incidencia incidencia) {
+        if (incidencia == null) {
+            return false;
+        }
+
+        return UsuarioValidator.usuarioValido(incidencia.getUsuario()) && esAsuntoValido(incidencia.getAsunto())
+                && esDescripcionValido(incidencia.getDescripcion()) && esFechaValida(incidencia.getFecha());
+    }
 
 }
