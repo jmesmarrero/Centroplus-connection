@@ -6,16 +6,17 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import es.ies.puerto.centroplus_connect.domain.model.Usuario;
-import es.ies.puerto.centroplus_connect.adapters.out.persistence.Usuario.UsuarioRepository;
+import es.ies.puerto.centroplus_connect.adapters.out.persistence.Usuario.IUsuarioPeristenceAdapter;
+
 import es.ies.puerto.centroplus_connect.business.IUsuarioService;
+import es.ies.puerto.centroplus_connect.business.Validator.UsuarioValidator;
 
 @Service
-
 public class UsuarioService implements IUsuarioService {
 
-    private final UsuarioRepository repository;
+    private final IUsuarioPeristenceAdapter repository;
 
-    public UsuarioService(UsuarioRepository repository) {
+    public UsuarioService(IUsuarioPeristenceAdapter repository) {
         this.repository = repository;
     }
 
@@ -24,9 +25,10 @@ public class UsuarioService implements IUsuarioService {
         if (repository.existsById(usuario.getId())) {
             throw new IllegalArgumentException("usuario ya creado");
         }
-        if (usuario.getDni() == null) {
-            throw new IllegalArgumentException("dni no puede ser nulo");
+        if (!UsuarioValidator.usuarioValido(usuario)) {
+            throw new IllegalArgumentException("Usuario a crear no valido");
         }
+
         return repository.save(usuario);
 
     }
@@ -61,11 +63,20 @@ public class UsuarioService implements IUsuarioService {
         if (id == null || usuario == null) {
             return Optional.empty();
         }
-        if (repository.existsById(id)) {
+        if (!repository.existsById(id)) {
             return Optional.empty();
         }
         usuario.setId(id);
         return Optional.of(repository.save(usuario));
+    }
+
+    @Override
+    public Optional<Usuario> findByEmail(String email) {
+        if (!UsuarioValidator.emailValido(email)) {
+            throw new IllegalArgumentException("Email no es valido");
+
+        }
+        return repository.findByEmail(email);
     }
 
 }

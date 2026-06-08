@@ -48,7 +48,7 @@ public class UsuarioValidator {
         if (usuario == null) {
             return false;
         }
-        return idValido(usuario.getId()) && nombreValido(usuario.getNombre()) &&
+        return nombreValido(usuario.getNombre()) &&
                 emailValido(usuario.getEmail()) &&
                 dniValido(usuario.getDni()) &&
                 esTipoUsuario(usuario.getTipoUsuario());

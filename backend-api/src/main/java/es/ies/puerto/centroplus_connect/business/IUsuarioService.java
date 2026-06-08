@@ -14,4 +14,5 @@ public interface IUsuarioService {
     List<Usuario>findAll();
     Optional<Usuario> update(Long id, Usuario usuario);
     void deleteById(Long id);
+    Optional<Usuario> findByEmail(String email);
 }
