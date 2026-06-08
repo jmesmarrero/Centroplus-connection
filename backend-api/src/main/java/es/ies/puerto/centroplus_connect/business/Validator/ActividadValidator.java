@@ -52,7 +52,7 @@ public class ActividadValidator {
         if (actividad == null) {
             return false;
         }
-        return idValido(actividad.getId()) && nombreValido(actividad.getNombre()) &&
+        return nombreValido(actividad.getNombre()) &&
                 esTipoActividad(actividad.getTipoActividad()) &&
                 duracionValida(actividad.getDuracion()) &&
                 precioValido(actividad.getPrecio()) && plazaMaxValida(actividad.getPlazasMaximas())

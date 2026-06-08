@@ -3,6 +3,8 @@ package es.ies.puerto.centroplus_connect.business;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import es.ies.puerto.centroplus_connect.domain.model.Actividad;
 
 public interface IActividadService {
@@ -12,5 +14,6 @@ public interface IActividadService {
     List<Actividad> findAll();
     Optional<Actividad> update(Long id, Actividad actividad);
     boolean deleteById(Long id);
+    Optional<Actividad> findByNombre(String nombre);
 
 }
