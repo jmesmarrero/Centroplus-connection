@@ -3,7 +3,6 @@ package es.ies.puerto.centroplus_connect.adapters.out.persistence.Actividad;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
 
 import es.ies.puerto.centroplus_connect.domain.model.Actividad;
 
