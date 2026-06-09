@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import es.ies.puerto.centroplus_connect.adapters.out.persistence.Actividad.IActividadPersistenceAdapter;
+
 import es.ies.puerto.centroplus_connect.adapters.out.persistence.Incidencia.IIncidenciaPersistenceAdapter;
 import es.ies.puerto.centroplus_connect.business.IIncidenciaService;
 import es.ies.puerto.centroplus_connect.business.Validator.IncidenciaValidator;
