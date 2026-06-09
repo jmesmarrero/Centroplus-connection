@@ -9,9 +9,7 @@ import es.ies.puerto.centroplus_connect.domain.model.Usuario;
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
 
-      Usuario toDomain(UsuarioRequest request);
+    Usuario toDomain(UsuarioRequest request);
 
     UsuarioResponse toResponse(Usuario usuario);
-
-
 }
