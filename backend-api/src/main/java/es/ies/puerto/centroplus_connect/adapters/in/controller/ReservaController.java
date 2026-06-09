@@ -76,7 +76,7 @@ public class ReservaController {
         reserva.setFecha(request.getFecha());
         reserva.setEstado(request.getEstado());
 
-        Reserva created = service.addReserva(reserva);
+        Reserva created = service.save(reserva);
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(created));
     }
 

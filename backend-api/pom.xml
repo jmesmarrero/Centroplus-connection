@@ -74,6 +74,10 @@
     		<artifactId>mapstruct</artifactId>
     		<version>1.5.5.Final</version>
 		</dependency>
+		<dependency>
+    		<groupId>org.hibernate.orm</groupId>
+    		<artifactId>hibernate-community-dialects</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
