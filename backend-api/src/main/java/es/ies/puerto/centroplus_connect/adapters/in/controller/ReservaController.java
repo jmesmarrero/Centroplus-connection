@@ -103,7 +103,7 @@ public class ReservaController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete usuario")
+    @Operation(summary = "Delete reserva")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
