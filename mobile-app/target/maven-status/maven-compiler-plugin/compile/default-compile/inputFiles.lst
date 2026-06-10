@@ -1,4 +1,10 @@
-/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/controllers/UsuariosController.java
-/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/controllers/ActividadesController.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/Usuario.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/TipoActividad.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/Incidencia.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/TipoUsuario.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/Actividad.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/EstadoReserva.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/EstadoIncidencia.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/models/Reserva.java
 /home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/App.java
-/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/controllers/ReservasController.java
+/home/jorge/jorgito/github/Centroplus-connection/mobile-app/src/main/java/es/ies/puerto/repositories/SQLiteConnectionManager.java

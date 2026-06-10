@@ -1,4 +1,10 @@
-es/ies/puerto/controllers/UsuariosController.class
 es/ies/puerto/App.class
-es/ies/puerto/controllers/ReservasController.class
-es/ies/puerto/controllers/ActividadesController.class
+es/ies/puerto/models/EstadoReserva.class
+es/ies/puerto/models/TipoActividad.class
+es/ies/puerto/models/Reserva.class
+es/ies/puerto/models/Incidencia.class
+es/ies/puerto/models/Actividad.class
+es/ies/puerto/models/EstadoIncidencia.class
+es/ies/puerto/models/Usuario.class
+es/ies/puerto/models/TipoUsuario.class
+es/ies/puerto/repositories/SQLiteConnectionManager.class
