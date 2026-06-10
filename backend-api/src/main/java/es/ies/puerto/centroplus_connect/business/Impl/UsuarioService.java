@@ -22,12 +22,12 @@ public class UsuarioService implements IUsuarioService {
 
     public Usuario registrarUsuario(Usuario usuario) {
 
-        if (repository.existsById(usuario.getId())) {
-            throw new IllegalArgumentException("usuario ya creado");
-        }
         if (!UsuarioValidator.usuarioValido(usuario)) {
-            throw new IllegalArgumentException("Usuario a crear no valido");
+        throw new IllegalArgumentException("Usuario a crear no valido");
         }
+        // if (usuario == null) {
+        //     return null;
+        // }
 
         return repository.save(usuario);
 
@@ -45,8 +45,6 @@ public class UsuarioService implements IUsuarioService {
     public List<Usuario> findAll() {
         return repository.findAll();
     }
-
-    
 
     public void deleteById(Long id) {
         if (repository.existsById(id)) {

@@ -24,7 +24,7 @@ import es.ies.puerto.centroplus_connect.domain.model.EstadoReserva;
 import es.ies.puerto.centroplus_connect.domain.model.Reserva;
 import es.ies.puerto.centroplus_connect.domain.model.Usuario;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController

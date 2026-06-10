@@ -10,13 +10,13 @@ public class UsuarioValidator {
         return id != null;
     }
 
-    public static boolean nombreValido(String nombre) {
-        if (nombre == null || nombre.isBlank()) {
-            return false;
-        }
-        nombre = nombre.trim();
-        return nombre.matches("^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{2,} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{2,})?$");
-    }
+    // public static boolean nombreValido(String nombre) {
+    //     if (nombre == null || nombre.isBlank()) {
+    //         return false;
+    //     }
+    //     nombre = nombre.trim();
+    //     return nombre.matches("^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{2,} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{2,})?$");
+    // }
 
     public static boolean dniValido(String dni) {
         if (dni == null || dni.isBlank()) {
@@ -48,7 +48,11 @@ public class UsuarioValidator {
         if (usuario == null) {
             return false;
         }
-        return nombreValido(usuario.getNombre()) &&
+        //System.out.println("nombre: " + nombreValido(usuario.getNombre()));
+        System.out.println("email: " + emailValido(usuario.getEmail()));
+        System.out.println("dni: " + dniValido(usuario.getDni()));
+        System.out.println("tipo: " + esTipoUsuario(usuario.getTipoUsuario()));
+        return 
                 emailValido(usuario.getEmail()) &&
                 dniValido(usuario.getDni()) &&
                 esTipoUsuario(usuario.getTipoUsuario());
