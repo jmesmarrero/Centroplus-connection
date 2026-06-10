@@ -1,4 +1,4 @@
-package es.ies.puerto.repositories;
+package es.ies.puerto.repositories.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,10 @@ import java.util.List;
 
 import es.ies.puerto.models.Actividad;
 import es.ies.puerto.models.TipoActividad;
+import es.ies.puerto.repositories.SQLiteConnectionManager;
+import es.ies.puerto.repositories.Interface.IActividadRepository;
 
-public class ActividadRepository extends SQLiteConnectionManager {
+public class ActividadRepository extends SQLiteConnectionManager implements IActividadRepository {
 
     public boolean create(Actividad actividad) {
         String sql = "INSERT INTO actividades (nombre, tipo_actividad, duracion, precio, plazas_maximas, plazas_ocupadas) VALUES (?,?,?,?,?,?)";
@@ -68,7 +70,8 @@ public class ActividadRepository extends SQLiteConnectionManager {
                 Integer plazasMaximas = resultado.getInt("plazas_maximas");
                 Integer plazasOcupadas = resultado.getInt("plazas_ocupadas");
 
-                actividades.add(new Actividad(id, nombre, tipoActividad, duracion, precio, plazasMaximas, plazasOcupadas));
+                actividades
+                        .add(new Actividad(id, nombre, tipoActividad, duracion, precio, plazasMaximas, plazasOcupadas));
             }
             return actividades;
 
@@ -137,9 +140,11 @@ public class ActividadRepository extends SQLiteConnectionManager {
 
     public List<Actividad> findConPlazasDisponibles() {
         String sql = "SELECT * FROM actividades WHERE plazas_ocupadas < plazas_maximas";
+        List<Actividad> actividades = new ArrayList<>();
+
         try (Connection connection = SQLiteConnectionManager.getConnection();
                 PreparedStatement sentencia = connection.prepareStatement(sql)) {
-            List<Actividad> actividades = new ArrayList<>();
+
             ResultSet resultado = sentencia.executeQuery();
             while (resultado.next()) {
                 Long id = resultado.getLong("id");

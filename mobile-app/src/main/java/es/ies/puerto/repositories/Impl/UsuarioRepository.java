@@ -1,4 +1,4 @@
-package es.ies.puerto.repositories;
+package es.ies.puerto.repositories.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,10 @@ import java.util.List;
 
 import es.ies.puerto.models.TipoUsuario;
 import es.ies.puerto.models.Usuario;
+import es.ies.puerto.repositories.SQLiteConnectionManager;
+import es.ies.puerto.repositories.Interface.IUsuarioRepository;
 
-public class UsuarioRepository extends SQLiteConnectionManager {
+public class UsuarioRepository extends SQLiteConnectionManager implements IUsuarioRepository {
 
     public boolean create(Usuario usuario) {
         String sql = "INSERT INTO usuarios (nombre, dni, email, telefono, tipo_usuario) VALUES (?,?,?,?,?)";
