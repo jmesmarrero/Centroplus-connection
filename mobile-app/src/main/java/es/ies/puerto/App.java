@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    private static final String RUTA = "/es/ies/puerto/actividades.fxml";
+    private static final String RUTA = "/es/ies/puerto/usuarios.fxml";
 
     @Override
     public void start(Stage stage) throws Exception {
