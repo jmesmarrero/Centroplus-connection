@@ -7,11 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.ies.puerto.models.Actividad;
 import es.ies.puerto.models.EstadoIncidencia;
-import es.ies.puerto.models.EstadoReserva;
 import es.ies.puerto.models.Incidencia;
-import es.ies.puerto.models.Reserva;
 import es.ies.puerto.models.Usuario;
 import es.ies.puerto.repositories.SQLiteConnectionManager;
 import es.ies.puerto.repositories.Interface.IIncidenciaRepository;
