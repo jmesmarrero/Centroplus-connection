@@ -8,6 +8,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.URI;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ActividadesController {
 
@@ -31,12 +33,20 @@ public class ActividadesController {
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode actividades = mapper.readTree(response.body());
+            
             ObservableList<String> items = FXCollections.observableArrayList();
-            items.add(response.body());
+            for (JsonNode actividad : actividades) {
+                String item = actividad.get("nombre").asText() + 
+                             " - " + actividad.get("tipoActividad").asText() +
+                             " - " + actividad.get("precio").asText() + "€";
+                items.add(item);
+            }
             listActividades.setItems(items);
 
         } catch (Exception e) {
-            System.err.println("Error conectando con el backend: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
     }
 }
