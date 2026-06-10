@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.ies.puerto.Service.Interfaces.IIncidenciaService;
+import es.ies.puerto.Service.validators.IncidenciaValidator;
+import es.ies.puerto.Service.validators.UsuarioValidator;
 import es.ies.puerto.models.EstadoIncidencia;
 import es.ies.puerto.models.Incidencia;
 import es.ies.puerto.models.Usuario;
 import es.ies.puerto.repositories.Interface.IIncidenciaRepository;
-import es.ies.puerto.validators.IncidenciaValidator;
-import es.ies.puerto.validators.UsuarioValidator;
 
 public class IncidenciaService implements IIncidenciaService {
 

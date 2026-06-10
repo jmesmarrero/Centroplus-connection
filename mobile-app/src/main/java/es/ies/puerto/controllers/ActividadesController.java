@@ -3,7 +3,11 @@ package es.ies.puerto.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+
 import java.util.List;
 
 import es.ies.puerto.models.Actividad;
@@ -30,5 +34,17 @@ public class ActividadesController {
             items.add(a.getNombre() + " - " + a.getTipoActividad() + " - " + a.getPrecio() + "€");
         }
         listActividades.setItems(items);
+    }
+
+    @FXML
+    private void volver() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/ies/puerto/main.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) listActividades.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (Exception e) {
+            System.err.println("Error volviendo: " + e.getMessage());
+        }
     }
 }

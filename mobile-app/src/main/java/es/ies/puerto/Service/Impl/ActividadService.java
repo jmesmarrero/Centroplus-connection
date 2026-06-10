@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.ies.puerto.Service.Interfaces.IActividadService;
+import es.ies.puerto.Service.validators.ActividadValidator;
 import es.ies.puerto.models.Actividad;
 import es.ies.puerto.models.TipoActividad;
 import es.ies.puerto.repositories.Interface.IActividadRepository;
-import es.ies.puerto.validators.ActividadValidator;
 
 public class ActividadService implements IActividadService {
 

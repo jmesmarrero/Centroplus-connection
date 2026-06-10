@@ -3,9 +3,9 @@ package es.ies.puerto.Service.Impl;
 import java.util.List;
 
 import es.ies.puerto.Service.Interfaces.IUsuarioService;
+import es.ies.puerto.Service.validators.UsuarioValidator;
 import es.ies.puerto.models.Usuario;
 import es.ies.puerto.repositories.Interface.IUsuarioRepository;
-import es.ies.puerto.validators.UsuarioValidator;
 
 public class UsuarioService implements IUsuarioService {
 
