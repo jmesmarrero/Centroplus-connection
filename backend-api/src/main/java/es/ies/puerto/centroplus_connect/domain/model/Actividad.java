@@ -3,6 +3,8 @@ package es.ies.puerto.centroplus_connect.domain.model;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -34,6 +36,7 @@ public class Actividad {
     @Column(name = "plazas_ocupadas")
     private Integer plazasOcupadas;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "actividad", fetch = FetchType.LAZY)
     private List<Reserva> reservas;
 
