@@ -32,7 +32,7 @@ public class UsuarioService implements IUsuarioService {
 
     public Optional<Usuario> findById(Long id) {
         if (id == null) {
-            return null;
+            return Optional.empty();
 
         }
 

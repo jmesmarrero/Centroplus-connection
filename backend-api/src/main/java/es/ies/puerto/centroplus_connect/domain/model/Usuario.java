@@ -50,6 +50,17 @@ public class Usuario {
         this.id = id;
     }
 
+    
+
+    public Usuario(Long id, String nombre, String dni, String email, String telefono, TipoUsuario tipoUsuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.dni = dni;
+        this.email = email;
+        this.telefono = telefono;
+        this.tipoUsuario = tipoUsuario;
+    }
+
     public Usuario(Long id, String nombre, String dni, String email, String telefono, TipoUsuario tipoUsuario,
             List<Reserva> reservas, List<Incidencia>incidencias) {
         this.id = id;
