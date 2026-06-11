@@ -63,15 +63,13 @@ public class UsuarioController {
     @PatchMapping("/{id}")
     @Operation(summary = "Update usuario (partial)")
     public ResponseEntity<UsuarioResponse> update(@PathVariable Long id, @RequestBody UsuarioRequest request) {
-        // convert request -> domain patch: completed may be null; title/desc may be
-        // null
+        
         Usuario patch = new Usuario();
         patch.setNombre(request.getNombre());
         patch.setDni(request.getDni());
         patch.setEmail(request.getEmail());
         patch.setTelefono(request.getTelefono());
         patch.setTipoUsuario(request.getTipoUsuario());
-        // patch.setCompleted(Boolean.TRUE.equals(request.getCompleted()));
 
         return service.update(id, patch)
                 .map(mapper::toResponse)
