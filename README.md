@@ -20,13 +20,14 @@ Developed by **Jorge Mesa Marrero** as part of the 1st-year DAM intermodular pro
 | Mobile App | JavaFX |
 | Database | SQLite |
 | Testing | JUnit 5 + Mockito |
-| Coverage | JaCoCo |
 | Version Control | Git + GitHub |
 
 
 
 
 ## Architecture
+
+```text
 backend-api (Spring Boot REST)
 ↓
 database (SQLite)
@@ -34,6 +35,7 @@ database (SQLite)
 mobile-app (JavaFX)
 ↓
 database (SQLite)
+```
 
 
 
@@ -49,11 +51,14 @@ database (SQLite)
 
 ## Project Structure
 
-centroplus-connection/
+```text
+Centroplus-connection/
 ├── backend-api/
 ├── mobile-app/
 ├── database/
 ├── docs/
+└── README.md
+```
 
 
 
