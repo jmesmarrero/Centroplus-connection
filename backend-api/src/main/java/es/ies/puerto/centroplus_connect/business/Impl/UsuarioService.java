@@ -25,9 +25,6 @@ public class UsuarioService implements IUsuarioService {
         if (!UsuarioValidator.usuarioValido(usuario)) {
         throw new IllegalArgumentException("Usuario a crear no valido");
         }
-        // if (usuario == null) {
-        //     return null;
-        // }
 
         return repository.save(usuario);
 

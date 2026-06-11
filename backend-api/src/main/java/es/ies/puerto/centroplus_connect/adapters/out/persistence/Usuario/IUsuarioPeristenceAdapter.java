@@ -64,6 +64,4 @@ public interface IUsuarioPeristenceAdapter {
      * @return true si existe usuario por id or false en caso contrario
      */
     boolean existsById(Long id);
-
-    
 }

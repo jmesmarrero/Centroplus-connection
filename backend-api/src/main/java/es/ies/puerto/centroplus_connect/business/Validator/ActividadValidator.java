@@ -15,7 +15,7 @@ public class ActividadValidator {
             return false;
         }
         nombre = nombre.trim();
-        return nombre.matches("^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{2,} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{2,})?$");
+        return nombre.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,}$");
     }
 
     public static boolean esTipoActividad(TipoActividad tipoActividad) {
@@ -45,7 +45,7 @@ public class ActividadValidator {
         if (plazasMaximas == null || plazasOcupadas == null) {
             return false;
         }
-        return plazasOcupadas < plazasMaximas;
+        return plazasOcupadas <= plazasMaximas;
     }
 
     public static boolean actividadValida(Actividad actividad) {

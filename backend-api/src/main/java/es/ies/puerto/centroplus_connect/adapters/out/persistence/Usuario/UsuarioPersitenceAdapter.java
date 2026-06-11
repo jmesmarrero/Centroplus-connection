@@ -3,6 +3,7 @@ package es.ies.puerto.centroplus_connect.adapters.out.persistence.Usuario;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.naming.java.javaURLContextFactory;
 import org.springframework.stereotype.Component;
 
 import es.ies.puerto.centroplus_connect.domain.model.Usuario;
@@ -11,8 +12,6 @@ import es.ies.puerto.centroplus_connect.domain.model.Usuario;
 public class UsuarioPersitenceAdapter implements IUsuarioPeristenceAdapter {
 
     private final UsuarioRepository jpaRepo;
-    
-    
 
     public UsuarioPersitenceAdapter(UsuarioRepository jpaRepo) {
         this.jpaRepo = jpaRepo;
@@ -37,7 +36,7 @@ public class UsuarioPersitenceAdapter implements IUsuarioPeristenceAdapter {
     public Optional<Usuario> update(Long id, Usuario usuario) {
         if (!jpaRepo.existsById(id)) {
             return Optional.empty();
-            
+
         }
         usuario.setId(id);
         return Optional.of(jpaRepo.save(usuario));

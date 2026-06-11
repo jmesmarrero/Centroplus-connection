@@ -14,7 +14,6 @@ import es.ies.puerto.centroplus_connect.domain.model.Actividad;
 public class ActividadService implements IActividadService {
 
     private final IActividadPersistenceAdapter repository;
-    
 
     public ActividadService(IActividadPersistenceAdapter repository) {
         this.repository = repository;
@@ -25,17 +24,14 @@ public class ActividadService implements IActividadService {
         if (actividad == null) {
             return null;
         }
-        
-        if (repository.existsById(actividad.getId())) {
-            throw new IllegalArgumentException();
-        }
+
         return repository.save(actividad);
     }
 
     @Override
     public Optional<Actividad> findById(Long id) {
         if (id == null) {
-            
+
             return Optional.empty();
         }
         return repository.findById(id);
@@ -49,7 +45,7 @@ public class ActividadService implements IActividadService {
     @Override
     public Optional<Actividad> update(Long id, Actividad actividad) {
         if (id == null) {
-            
+
             return Optional.empty();
         }
         if (!ActividadValidator.actividadValida(actividad)) {
@@ -71,7 +67,7 @@ public class ActividadService implements IActividadService {
         if (repository.existsById(id)) {
             repository.deleteById(id);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
