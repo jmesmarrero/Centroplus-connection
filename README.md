@@ -2,7 +2,7 @@
 
 **Academic and Sports Center Management Platform**
 
----
+
 
 ## About
 
@@ -10,7 +10,7 @@ CentroPlus Connection is a full-stack application designed to manage an academic
 
 Developed by **Jorge Mesa Marrero** as part of the 1st-year DAM intermodular project.
 
----
+
 
 ## Technologies
 
@@ -22,18 +22,20 @@ Developed by **Jorge Mesa Marrero** as part of the 1st-year DAM intermodular pro
 | Testing | JUnit 5 + Mockito |
 | Coverage | JaCoCo |
 | Version Control | Git + GitHub |
-| Deployment | Docker |
 
----
+
+
 
 ## Architecture
-mobile-app (JavaFX)
-↓
 backend-api (Spring Boot REST)
 ↓
-database (H2 / SQLite)
+database (SQLite)
 
----
+mobile-app (JavaFX)
+↓
+database (SQLite)
+
+
 
 ## Features
 
@@ -43,7 +45,7 @@ database (H2 / SQLite)
 - Incident reporting
 - REST API with full CRUD operations
 
----
+
 
 ## Project Structure
 
@@ -52,10 +54,10 @@ centroplus-connection/
 ├── mobile-app/
 ├── database/
 ├── docs/
-└── docker-compose.yml
 
 
----
+
+
 
 ## Getting Started
 
@@ -76,11 +78,11 @@ cd mobile-app
 mvn clean javafx:run
 ```
 
----
+
 
 ## Author
 
 **Jorge Mesa Marrero**  
 1st Year DAM — IES Puerto
 
----
+
