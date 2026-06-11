@@ -79,8 +79,7 @@ public class IncidenciaController {
     @PatchMapping("/{id}")
     @Operation(summary = "Update Incidencia (partial)")
     public ResponseEntity<IncidenciaResponse> update(@PathVariable Long id, @RequestBody IncidenciaRequest request) {
-        // convert request -> domain patch: completed may be null; title/desc may be
-        // null
+       
         Usuario usuario = usuarioService.findById(request.getIdUsuario())
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
 

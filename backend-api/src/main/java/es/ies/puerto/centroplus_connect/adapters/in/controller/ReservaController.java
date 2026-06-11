@@ -83,8 +83,7 @@ public class ReservaController {
     @PatchMapping("/{id}")
     @Operation(summary = "Update reserva (partial)")
     public ResponseEntity<ReservaResponse> update(@PathVariable Long id, @RequestBody ReservaRequest request) {
-        // convert request -> domain patch: completed may be null; title/desc may be
-        // null
+        
         Usuario usuario = usuarioService.findById(request.getIdUsuario())
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
         Actividad actividad = actividadService.findById(request.getIdActividad())

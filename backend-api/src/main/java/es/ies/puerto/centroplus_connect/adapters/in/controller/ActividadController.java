@@ -61,8 +61,7 @@ public class ActividadController {
     @PatchMapping("/{id}")
     @Operation(summary = "Update actividad (partial)")
     public ResponseEntity<ActividadResponse> update(@PathVariable Long id, @RequestBody ActividadRequest request) {
-        // convert request -> domain patch: completed may be null; title/desc may be
-        // null
+        
         Actividad patch = new Actividad();
         patch.setNombre(request.getNombre());
         patch.setTipoActividad(request.getTipoActividad());
